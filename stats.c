@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <math.h>
 // This is a constant defined using the "preprocessor".
 #define MAX_ENTRIES 5
+
 
 // Given an array of doubles `entries` of size `length`, let's calculate some basic statistics (Check wikipedia if you don't remember how to do stddev).
 void print_stats(double *entries, int length) {
@@ -12,6 +14,30 @@ void print_stats(double *entries, int length) {
   for (int i=0; i<length; i++) {
     sum += entries[i];
   }
+  mean = sum/length;
+  for (int i = 0; i < length; i++){
+ 	 if (entries[i] >= max){
+		max = entries[i];
+	
+	} 
+  }
+min = max;
+   for (int i = 0; i < length; i++){
+         if (entries[i] < min){
+                min = entries[i];
+        } 
+  }
+double differ = 0;
+double varsum = 0;   
+for (int i = 0; i < length; i++){
+         differ = entries[i] - mean;
+	 varsum = differ * differ;
+ 
+                       
+  }   
+  double variance = varsum / length;
+  stddev  = sqrt(variance);
+
   printf("\tN=%d\n", length);
   printf("\tsum=%lf\n", sum);
   printf("\tmean=%lf\n", mean);
@@ -67,6 +93,9 @@ int main(void) {
     }
 
     // TODO: print all the items entered here:
+	for (int i = 0; i < MAX_ENTRIES; i++){
+		printf("%lf \n", entries[i] );
+	}	
   }
 }
 
